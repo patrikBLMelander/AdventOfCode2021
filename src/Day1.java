@@ -1,7 +1,5 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
+
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,7 +16,6 @@ public class Day1 {
     public Day1() {
         System.out.println(day1Problem1(list));
         System.out.println(day1Problem2(list));
-
     }
 
     public static void main(String[] args) throws IOException {
