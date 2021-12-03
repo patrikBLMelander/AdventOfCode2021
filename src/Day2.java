@@ -14,10 +14,10 @@ public class Day2 {
 
     public Day2() {
         System.out.println(problem1(list));
-        System.out.println(problem2(list));
+       // System.out.println(problem2(list));
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         long startTime = System.nanoTime();
 
         Day2 d = new Day2();
@@ -52,8 +52,8 @@ public class Day2 {
             String[] parts = s.split(" ", 2);
 
             switch (parts[0]) {
-                case "up" -> {aim -= Integer.parseInt(parts[1]);}
-                case "down" -> {aim += Integer.parseInt(parts[1]);}
+                case "up" -> aim -= Integer.parseInt(parts[1]);
+                case "down" -> aim += Integer.parseInt(parts[1]);
                 case "forward" -> {horizon += Integer.parseInt(parts[1]);
                                 depth+=aim*Integer.parseInt(parts[1]);}
             }
