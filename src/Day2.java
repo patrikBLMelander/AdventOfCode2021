@@ -1,4 +1,4 @@
-import java.io.IOException;
+
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ public class Day2 {
 
     public Day2() {
         System.out.println(problem1(list));
-       // System.out.println(problem2(list));
+        System.out.println(problem2(list));
     }
 
     public static void main(String[] args){
@@ -27,19 +27,19 @@ public class Day2 {
 
 
     public static int problem1(List<String> list) {
-        int deapth =0;
+        int depth =0;
         int horizon=0;
 
         for (String s : list) {
             String[] parts = s.split(" ", 2);
 
                     switch (parts[0]) {
-                case "up" -> deapth -= Integer.parseInt(parts[1]);
-                case "down" -> deapth += Integer.parseInt(parts[1]);
+                case "up" -> depth -= Integer.parseInt(parts[1]);
+                case "down" -> depth += Integer.parseInt(parts[1]);
                 case "forward" -> horizon += Integer.parseInt(parts[1]);
             }
         }
-        return deapth*horizon;
+        return depth*horizon;
 
     }
 

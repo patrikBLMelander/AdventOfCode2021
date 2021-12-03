@@ -1,5 +1,4 @@
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -18,7 +17,7 @@ public class Day1 {
         System.out.println(day1Problem2(list));
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         long startTime = System.nanoTime();
 
         Day1 d = new Day1();
