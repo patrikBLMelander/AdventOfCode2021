@@ -96,7 +96,7 @@ public class Day4 {
                                     }
 
                                 }
-                                    break;
+
                             }
                         }
                     }
