@@ -30,33 +30,9 @@ public class Day4 {
         //Create Draw
         String[] draw  =list.get(0).split(",");
 
+        List<GameBoard> gameBoards = CreateGameBoards(list);
 
-        //Create all gameboards
-        List<GameBoard> gameBoards = new ArrayList<>();
 
-        GameBoard gameBoard = new GameBoard();
-
-        for (int i = 2; i < list.size(); i++) {
-            String line = list.get(i);
-
-            if (line.isBlank()) {
-                gameBoards.add(gameBoard);
-                gameBoard = new GameBoard();
-            } else {
-                String[] parts = line.split("[^\\d]+");
-                gameBoard.gameBoard.addAll(Arrays.asList(parts));
-            }
-        }
-
-        gameBoards.add(gameBoard);
-
-        for (GameBoard g : gameBoards) {
-            for (int i = 0; i <g.gameBoard.size() ; i++) {
-                if (g.gameBoard.get(i).isBlank()){
-                    g.gameBoard.remove(i);
-                }
-            }
-        }
 
         int lastNr = 0;
         boolean winnerFound = false;
@@ -98,33 +74,7 @@ public class Day4 {
         //Create Draw
         String[] draw  =list.get(0).split(",");
 
-
-        //Create all gameboards
-        List<GameBoard> gameBoards = new ArrayList<>();
-
-        GameBoard gameBoard = new GameBoard();
-
-        for (int i = 2; i < list.size(); i++) {
-            String line = list.get(i);
-
-            if (line.isBlank()) {
-                gameBoards.add(gameBoard);
-                gameBoard = new GameBoard();
-            } else {
-                String[] parts = line.split("[^\\d]+");
-                gameBoard.gameBoard.addAll(Arrays.asList(parts));
-            }
-        }
-
-        gameBoards.add(gameBoard);
-
-        for (GameBoard g : gameBoards) {
-            for (int i = 0; i <g.gameBoard.size() ; i++) {
-                if (g.gameBoard.get(i).isBlank()){
-                    g.gameBoard.remove(i);
-                }
-            }
-        }
+        List<GameBoard> gameBoards = CreateGameBoards(list);
         int sum=0;
         int lastNr = 0;
         boolean allWinnersFound = false;
@@ -209,40 +159,30 @@ public class Day4 {
     public boolean checkVertical(int index, GameBoard gameBoard) {
 
         if(index==0||index==1||index==2||index==3||index==4){
-            if(gameBoard.gameBoard.get(index + 5).equals("x")
+            return gameBoard.gameBoard.get(index + 5).equals("x")
                     && gameBoard.gameBoard.get(index + 10).equals("x")
                     && gameBoard.gameBoard.get(index + 15).equals("x")
-                    && gameBoard.gameBoard.get(index + 20).equals("x")){
-                return true;
-            }else return false;
+                    && gameBoard.gameBoard.get(index + 20).equals("x");
         }else if(index==5||index==6||index==7||index==8||index==9){
-            if(gameBoard.gameBoard.get(index + 5).equals("x")
+            return gameBoard.gameBoard.get(index + 5).equals("x")
                     && gameBoard.gameBoard.get(index + 10).equals("x")
                     && gameBoard.gameBoard.get(index + 15).equals("x")
-                    && gameBoard.gameBoard.get(index -5).equals("x")){
-                return true;
-            }else return false;
+                    && gameBoard.gameBoard.get(index - 5).equals("x");
         }else if(index==10||index==11||index==12||index==13||index==14){
-            if(gameBoard.gameBoard.get(index + 5).equals("x")
+            return gameBoard.gameBoard.get(index + 5).equals("x")
                     && gameBoard.gameBoard.get(index + 10).equals("x")
                     && gameBoard.gameBoard.get(index - 10).equals("x")
-                    && gameBoard.gameBoard.get(index -5).equals("x")){
-                return true;
-            }else return false;
+                    && gameBoard.gameBoard.get(index - 5).equals("x");
         }else if(index==15||index==16||index==17||index==18||index==19){
-            if(gameBoard.gameBoard.get(index + 5).equals("x")
+            return gameBoard.gameBoard.get(index + 5).equals("x")
                     && gameBoard.gameBoard.get(index - 15).equals("x")
                     && gameBoard.gameBoard.get(index - 10).equals("x")
-                    && gameBoard.gameBoard.get(index -5).equals("x")){
-                return true;
-            }else return false;
+                    && gameBoard.gameBoard.get(index - 5).equals("x");
         }else if(index==20||index==21||index==22||index==23||index==24){
-            if(gameBoard.gameBoard.get(index - 20).equals("x")
+            return gameBoard.gameBoard.get(index - 20).equals("x")
                     && gameBoard.gameBoard.get(index - 15).equals("x")
                     && gameBoard.gameBoard.get(index - 10).equals("x")
-                    && gameBoard.gameBoard.get(index -5).equals("x")){
-                return true;
-            }else return false;
+                    && gameBoard.gameBoard.get(index - 5).equals("x");
         }
 
         return false;
@@ -260,8 +200,36 @@ public class Day4 {
 
         return winnerCounter == gameBoards.size();
     }
+    public List<GameBoard> CreateGameBoards(List<String> list){
+        List<GameBoard> gameBoards = new ArrayList<>();
 
-    public class GameBoard{
+        GameBoard gameBoard = new GameBoard();
+
+        for (int i = 2; i < list.size(); i++) {
+            String line = list.get(i);
+
+            if (line.isBlank()) {
+                gameBoards.add(gameBoard);
+                gameBoard = new GameBoard();
+            } else {
+                String[] parts = line.split("[^\\d]+");
+                gameBoard.gameBoard.addAll(Arrays.asList(parts));
+            }
+        }
+
+        gameBoards.add(gameBoard);
+
+        for (GameBoard g : gameBoards) {
+            for (int i = 0; i <g.gameBoard.size() ; i++) {
+                if (g.gameBoard.get(i).isBlank()){
+                    g.gameBoard.remove(i);
+                }
+            }
+        }
+        return gameBoards;
+    }
+
+    public static class GameBoard{
         List<String> gameBoard = new ArrayList<>();
         boolean isWinner = false;
     }
