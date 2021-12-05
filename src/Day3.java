@@ -32,7 +32,7 @@ public class Day3 {
         StringBuilder epsilonRate = new StringBuilder();
 
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 12; i++) {
             for (String s : list) {
                 char[] charArray = s.toCharArray();
                 if (charArray[i] == '1') {
