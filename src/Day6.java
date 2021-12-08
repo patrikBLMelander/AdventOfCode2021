@@ -1,7 +1,7 @@
 import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
+
 
 /**
  * Created by Patrik Melander
@@ -37,19 +37,19 @@ public class Day6 {
         }
         int dayCounter = 0;
 
-        while (dayCounter<=79) {
+        while (dayCounter<80) {
             List<Integer> newDayLanternFiches = lanternFiches;
             lanternFiches=new ArrayList<>();
-            for (int i = 0; i < newDayLanternFiches.size(); i++) {
-                int tempValue = newDayLanternFiches.get(i)-1;
+            for (Integer newDayLanternFish : newDayLanternFiches) {
+                int tempValue = newDayLanternFish - 1;
 
 
-                if (newDayLanternFiches.get(i)==0){
-                    tempValue=6;
+                if (newDayLanternFish == 0) {
+                    tempValue = 6;
                     lanternFiches.add(tempValue);
                     Integer newFish = 8;
                     lanternFiches.add(newFish);
-                }else{
+                } else {
                     lanternFiches.add(tempValue);
                 }
             }
@@ -68,8 +68,8 @@ public class Day6 {
 
             long temp;
 
-            for (int i = 0; i < startQuantity.length; i++) {
-                lanternFiches[Integer.parseInt(startQuantity[i])]++;
+            for (String value : startQuantity) {
+                lanternFiches[Integer.parseInt(value)]++;
             }
 
             for (int i = 0; i < 256; i++) {
