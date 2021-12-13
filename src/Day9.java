@@ -138,7 +138,7 @@ public class Day9 {
         }
 
 
-        List<Positions> lowPoints = new ArrayList<>();
+        List<Point> lowPoints = new ArrayList<>();
         for (int verticalCounter = 0; verticalCounter < values.size(); verticalCounter++) {
             List<Integer> row = values.get(verticalCounter);
             for (int horizontalCounter = row.size() - 1; horizontalCounter >= 0; horizontalCounter--) {
@@ -148,14 +148,14 @@ public class Day9 {
                 if (verticalCounter != 0 && values.get(verticalCounter - 1).get(horizontalCounter) < currentSmokeValue) continue;
                 if (verticalCounter != values.size() - 1 && values.get(verticalCounter + 1).get(horizontalCounter) < currentSmokeValue) continue;
                 if (currentSmokeValue != 9) {
-                    lowPoints.add(new Positions(verticalCounter, horizontalCounter));
+                    lowPoints.add(new Point(verticalCounter, horizontalCounter));
                 }
             }
         }
 
-        List<List<Positions>> basins = new ArrayList<>();
-        for (Positions lowPoint : lowPoints) {
-            List<Positions> basin = new ArrayList<>();
+        List<List<Point>> basins = new ArrayList<>();
+        for (Point lowPoint : lowPoints) {
+            List<Point> basin = new ArrayList<>();
 
             findBasin(values, lowPoint, basin);
 
@@ -171,15 +171,15 @@ public class Day9 {
         return result;
     }
 
-    private static void findBasin(List<List<Integer>> values, Positions coords, List<Positions> basin) {
-        int x = coords.getX();
-        int y = coords.getY();
+    private static void findBasin(List<List<Integer>> values, Point coords, List<Point> basin) {
+        int x = coords.row;
+        int y = coords.col;
         if (values.get(x).get(y) == 9 || basin.contains(coords)) return;
         basin.add(coords);
-        if (x != values.size() - 1) findBasin(values, new Positions(x + 1, y), basin);
-        if (x != 0) findBasin(values, new Positions(x - 1, y), basin);
-        if (y != values.get(0).size() - 1) findBasin(values, new Positions(x, y + 1), basin);
-        if (y != 0) findBasin(values, new Positions(x, y - 1), basin);
+        if (x != values.size() - 1) findBasin(values, new Point(x + 1, y), basin);
+        if (x != 0) findBasin(values, new Point(x - 1, y), basin);
+        if (y != values.get(0).size() - 1) findBasin(values, new Point(x, y + 1), basin);
+        if (y != 0) findBasin(values, new Point(x, y - 1), basin);
     }
 
     public static void main(String[] args) {
@@ -190,29 +190,4 @@ public class Day9 {
     }
 
 
-    static class Positions {
-        int x;
-        int y;
-
-        public Positions(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        public int getX() {
-            return x;
-        }
-
-        public int getY() {
-            return y;
-        }
-
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Positions that = (Positions) o;
-            return x == that.x && y == that.y;
-        }
-
-    }
 }

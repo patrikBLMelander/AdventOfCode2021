@@ -146,5 +146,4 @@ public class Day3 {
         return list.get(0);
     }
 
-
 }
