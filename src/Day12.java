@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class Day12
 {
+    public Map<String, List<String>> paths;
 
     List<String> list = InputReader.readStringFile("day12.txt");
 
@@ -21,10 +22,7 @@ public class Day12
         //System.out.println("Answer Problem 2: " + problem2(list));
     }
 
-    private int problem2(List<String> list) {
 
-        return(0);
-    }
 
     private int problem1(List<String> list) {
         paths = new HashMap<>();
@@ -34,12 +32,14 @@ public class Day12
             paths.computeIfAbsent(pathParts[1], k -> new ArrayList<>()).add(pathParts[0]);
         }
 
-        //Part 1
         return (navigate("start", new ArrayList<>(), false).size());
     }
 
+    private int problem2(List<String> list) {
 
-    public Map<String, List<String>> paths;
+        return(0);
+    }
+
 
 
 
