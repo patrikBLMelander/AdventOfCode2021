@@ -11,19 +11,18 @@ import java.util.List;
  */
 public class Day8 {
     List<String> list = InputReader.readStringFile("test.txt");
+    Timer timer = new Timer();
 
     public Day8() {
-        System.out.println("Answer Problem 1: " + problem1(list));
-        System.out.println("Answer Problem 2: " + problem2(list));
+        System.out.println("Answer: " + problem1(list));
+        System.out.println("Answer: " + problem2(list));
     }
 
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-
         Day8 d = new Day8();
-        System.out.printf("Execution time: %f milliseconds%n", ((double) System.nanoTime() - startTime) / 1000000);
     }
     private int problem1(List<String> list) {
+        timer.startTimer();
         int counter= 0;
         List<String> secondHalf=new ArrayList<>();
         for (String s : list) {
@@ -39,9 +38,11 @@ public class Day8 {
                 }
             }
         }
+        timer.stopTimer("Day8", "Problem1");
         return counter;
     }
     private int problem2(List<String> list) {
+        timer.startTimer();
 
             int sum = 0;
             for(String s : list)
@@ -105,6 +106,7 @@ public class Day8 {
                 sum += number;
 
             }
+            timer.stopTimer("Day8", "Problem2");
             return sum;
         }
 

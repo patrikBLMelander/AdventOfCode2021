@@ -11,37 +11,39 @@ import java.util.List;
 public class Day1 {
 
     List<Integer> list = InputReader.readIntegerFile("day1.txt");
+    Timer timer = new Timer();
 
     public Day1() {
-        System.out.println(day1Problem1(list));
-        System.out.println(day1Problem2(list));
+        System.out.println("Answer: " + problem1(list));
+        System.out.println("Answer: " + problem2(list));
     }
 
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-
         Day1 d = new Day1();
-        System.out.printf("Execution time: %f milliseconds%n", ((double) System.nanoTime() - startTime) / 1000000);
     }
 
-    public static int day1Problem1(List<Integer> list) {
+    public int problem1(List<Integer> list) {
+        timer.startTimer();
         int increased=0;
         for (int i = 1; i < list.size(); i++) {
             if (list.get(i-1)<list.get(i)){
                 increased++;
             }
         }
+        timer.stopTimer("Day1", "Problem1");
         return increased;
 
     }
 
-    public static int day1Problem2(List<Integer> list) {
+    public int problem2(List<Integer> list) {
+        timer.startTimer();
         int increased=0;
         for (int i = 3; i < list.size(); i++) {
             if (list.get(i-1)+list.get(i-2)+list.get(i-3)<list.get(i)+list.get(i-1)+list.get(i-2)){
                 increased++;
             }
         }
+        timer.stopTimer("Day1", "Problem2");
         return increased;
     }
 

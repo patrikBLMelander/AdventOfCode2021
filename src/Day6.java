@@ -12,21 +12,20 @@ import java.util.List;
  */
 public class Day6 {
     List<String> list = InputReader.readStringFile("day6.txt");
+    Timer timer = new Timer();
 
     public Day6() {
-        System.out.println("Answer Problem 1: " + problem1(list));
-        System.out.println("Answer Problem 2: " + problem2(list));
+        System.out.println("Answer: " + problem1(list));
+        System.out.println("Answer: " + problem2(list));
     }
 
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-
         Day6 d = new Day6();
-        System.out.printf("Execution time: %f milliseconds%n", ((double) System.nanoTime() - startTime) / 1000000);
     }
 
 
-    public static int problem1(List<String> list) {
+    public int problem1(List<String> list) {
+        timer.startTimer();
         String[] parts = new String[999];
         List<Integer> lanternFiches =new ArrayList<>();
         for (String s: list) {
@@ -55,11 +54,12 @@ public class Day6 {
             }
             dayCounter++;
         }
-
+        timer.stopTimer("Day6", "Problem1");
         return lanternFiches.size();
     }
 
-    public static long problem2(List<String> list) {
+    public long problem2(List<String> list) {
+        timer.startTimer();
 
         for (String s : list) {
             String[] startQuantity = s.split(",");
@@ -84,7 +84,7 @@ public class Day6 {
                 lanternFiches[7] = lanternFiches[8];
                 lanternFiches[8] = temp;
             }
-
+            timer.stopTimer("Day6", "Problem2");
             return lanternFiches[0] + lanternFiches[1] + lanternFiches[2] + lanternFiches[3] + lanternFiches[4] + lanternFiches[5] + lanternFiches[6] + lanternFiches[7] + lanternFiches[8];
         }
         return 0;

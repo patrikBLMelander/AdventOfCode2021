@@ -7,20 +7,19 @@ import java.util.List;
 public class Day11 {
 
     List<String> list = InputReader.readStringFile("day11.txt");
+    Timer timer = new Timer();
 
     public static void main(String[] args) throws IOException {
-        long startTime = System.nanoTime();
-
         Day11 d = new Day11();
-        System.out.printf("Execution time: %f milliseconds%n", ((double) System.nanoTime() - startTime) / 1000000);
     }
 
     public Day11() {
-        System.out.println("Answer Problem 1: " + problem1(list));
-        System.out.println("Answer Problem 2: " + problem2(list));
+        System.out.println("Answer: " + problem1(list));
+        System.out.println("Answer: " + problem2(list));
     }
 
     private int problem1(List<String> list) {
+        timer.startTimer();
 
         int[][] octopuses = new int[list.size()][list.get(0).length()];
         for(int i = 0; i < list.size(); i++)
@@ -70,7 +69,7 @@ public class Day11 {
 
         }
 
-
+        timer.stopTimer("Day11", "Problem1");
         return flashes;
     }
 
@@ -134,7 +133,7 @@ public class Day11 {
                 }
             }
         }
-
+        timer.stopTimer("Day11", "Problem2");
         return steps;
     }
 }

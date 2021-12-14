@@ -12,22 +12,20 @@ import java.util.List;
 public class Day5 {
 
     List<String> list = InputReader.readStringFile("day5.txt");
+    Timer timer = new Timer();
 
     public Day5() {
-        //System.out.println(problem1(list));
-        System.out.println(problem2(list));
+        System.out.println("Answer: " + problem1(list));
+        System.out.println("Answer: " + problem2(list));
     }
 
     public static void main(String[] args){
-        long startTime = System.nanoTime();
-
         Day5 d = new Day5();
-        System.out.printf("Execution time: %f milliseconds%n", ((double) System.nanoTime() - startTime) / 1000000);
+
     }
 
-
-
     public int problem1(List<String> list) {
+        timer.startTimer();
         int x1;
         int y1;
         int x2;
@@ -72,12 +70,13 @@ public class Day5 {
 
                 }
         }
-
+        timer.stopTimer("Day5", "Problem1");
        return countIntersections(mineField);
 
     }
 
     public int problem2(List<String> list) {
+        timer.startTimer();
         int x1;
         int y1;
         int x2;
@@ -159,19 +158,10 @@ public class Day5 {
 
 
         }
-        //printPattern(mineField);
+        timer.stopTimer("Day5", "Problem2");
         return countIntersections(mineField);
     }
 
-    private void printPattern(int[][] grid) {
-        for (int y = 0; y < grid.length; y++) {
-            for (int x = 0; x < grid[y].length; x++) {
-                System.out.print(" "+ (grid[x][y] == 0 ? "." : grid[x][y]));
-            }
-            System.out.println();
-        }
-        System.out.println();
-    }
     private int countIntersections(int[][] grid) {
         int result = 0;
 

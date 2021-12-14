@@ -11,21 +11,21 @@ import java.util.List;
  */
 public class Day3 {
     List<String> list = InputReader.readStringFile("day3.txt");
+    Timer timer = new Timer();
+
     public Day3() {
-        System.out.println("Answer Problem 1: " + problem1(list));
-        System.out.println("Answer Problem 2: " + problem2(list));
+        System.out.println("Answer: " + problem1(list));
+        System.out.println("Answer: " + problem2(list));
     }
 
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-
         Day3 d = new Day3();
-        System.out.printf("Execution time: %f milliseconds%n", ((double) System.nanoTime() - startTime) / 1000000);
     }
 
 
 
-    public static int problem1(List<String> list) {
+    public int problem1(List<String> list) {
+        timer.startTimer();
         int counterA=0;
         int counterB=0;
         StringBuilder gammaRate = new StringBuilder();
@@ -54,19 +54,20 @@ public class Day3 {
         int epsilon = Integer.parseInt(epsilonRate.toString(), 2);
 
 
-
+        timer.stopTimer("Day3", "Problem1");
         return gamma* epsilon;
     }
 
-    public static int problem2(List<String> list) {
+    public int problem2(List<String> list) {
+        timer.startTimer();
         int OGR = Integer.parseInt(oxygenGeneratorRating(list), 2);
         int CO2 = Integer.parseInt(CO2ScrubberRating(list), 2);
 
-
+        timer.stopTimer("Day3", "Problem2");
         return OGR*CO2;
     }
 
-    public static String oxygenGeneratorRating(List<String> list){
+    public String oxygenGeneratorRating(List<String> list){
         int counter1a=0;
         int counter=0;
 
@@ -102,7 +103,6 @@ public class Day3 {
             newList= new ArrayList<>();
 
         }
-
         return list.get(0);
     }
 

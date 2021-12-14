@@ -10,24 +10,22 @@ import java.util.*;
  */
 public class Day4 {
     List<String> list = InputReader.readStringFile("day4.txt");
+    Timer timer = new Timer();
 
 
 
     public Day4() {
 
-        System.out.println(problem1(list));
-        System.out.println(problem2(list));
+        System.out.println("Answer: " + problem1(list));
+        System.out.println("Answer: " + problem2(list));
     }
 
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-
         Day4 d = new Day4();
-        System.out.printf("Execution time: %f milliseconds%n", ((double) System.nanoTime() - startTime) / 1000000);
     }
 
     public int problem1(List<String> list) {
-        //Create Draw
+        timer.startTimer();
         String[] draw  =list.get(0).split(",");
 
         List<GameBoard> gameBoards = CreateGameBoards(list);
@@ -66,12 +64,12 @@ public class Day4 {
             }
         }
 
-
+        timer.stopTimer("Day4", "Problem1");
         return sum * lastNr ;
     }
 
     public int problem2(List<String> list) {
-        //Create Draw
+        timer.startTimer();
         String[] draw  =list.get(0).split(",");
 
         List<GameBoard> gameBoards = CreateGameBoards(list);
@@ -106,11 +104,7 @@ public class Day4 {
             }
 
         }
-
-
-
-
-
+        timer.stopTimer("Day4", "Problem2");
         return sum * lastNr ;
     }
 
@@ -233,8 +227,4 @@ public class Day4 {
         List<String> gameBoard = new ArrayList<>();
         boolean isWinner = false;
     }
-
-
-
-
 }

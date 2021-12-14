@@ -9,29 +9,30 @@ public class Day12
     public Map<String, List<String>> paths;
 
     List<String> list = InputReader.readStringFile("day12.txt");
+    Timer timer = new Timer();
 
     public static void main(String[] args) throws IOException {
-        long startTime = System.nanoTime();
-
         Day12 d = new Day12();
-        System.out.printf("Execution time: %f milliseconds%n", ((double) System.nanoTime() - startTime) / 1000000);
     }
 
     public Day12() throws IOException {
-        System.out.println("Answer Problem 1: " + problem1(list));
-        //System.out.println("Answer Problem 2: " + problem2(list));
+        System.out.println("Answer: " + problem1(list));
+        //FAIL
+        //System.out.println("Answer: " + problem2(list));
+
     }
 
 
 
     private int problem1(List<String> list) {
+        timer.startTimer();
         paths = new HashMap<>();
         for(String s : list) {
             String[] pathParts = s.trim().split("-");
             paths.computeIfAbsent(pathParts[0], k -> new ArrayList<>()).add(pathParts[1]);
             paths.computeIfAbsent(pathParts[1], k -> new ArrayList<>()).add(pathParts[0]);
         }
-
+        timer.stopTimer("Day12", "Problem1");
         return (navigate("start", new ArrayList<>(), false).size());
     }
 

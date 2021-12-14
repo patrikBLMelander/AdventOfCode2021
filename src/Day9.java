@@ -11,13 +11,15 @@ import java.util.stream.Collectors;
 public class Day9 {
 
     List<String> list = InputReader.readStringFile("day9.txt");
+    Timer timer = new Timer();
 
     public Day9() {
-        System.out.println("Answer Problem 1: " + problem1(list));
-        System.out.println("Answer Problem 2: " + problem2(list));
+        System.out.println("Answer: " + problem1(list));
+        System.out.println("Answer: " + problem2(list));
     }
 
     private int problem1(List<String> list) {
+        timer.startTimer();
         int verticalCounter = 0;
         int horizontalCounter = 0;
         int sum = 0;
@@ -122,11 +124,12 @@ public class Day9 {
             }
         }
 
-
+        timer.stopTimer("Day9", "Problem1");
         return sum;
     }
 
     private int problem2(List<String> list) {
+        timer.startTimer();
 
         List<List<Integer>> values = new ArrayList<>();
 
@@ -168,6 +171,7 @@ public class Day9 {
         for (int i = 0; i < 3; i++) {
             result *= basins.get(i).size();
         }
+        timer.stopTimer("Day9", "Problem2");
         return result;
     }
 
@@ -183,10 +187,7 @@ public class Day9 {
     }
 
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-
         Day9 d = new Day9();
-        System.out.printf("Execution time: %f milliseconds%n", ((double) System.nanoTime() - startTime) / 1000000);
     }
 
 

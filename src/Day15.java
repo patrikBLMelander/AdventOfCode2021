@@ -10,25 +10,27 @@ import java.util.List;
  */
 public class Day15 {
     List<String> list = InputReader.readStringFile("test.txt");
+    Timer timer = new Timer();
 
 
     public static void main(String[] args) throws IOException {
-        long startTime = System.nanoTime();
-
         Day15 d = new Day15();
-        System.out.printf("Execution time: %f milliseconds%n", ((double) System.nanoTime() - startTime) / 1000000);
     }
 
     public Day15() {
-        System.out.println("Answer Problem 1: " + problem1(list));
-        System.out.println("Answer Problem 2: " + problem2(list));
+        System.out.println("Answer: " + problem1(list));
+        System.out.println("Answer:" + problem2(list));
     }
 
     private int problem1(List<String> list) {
+        timer.startTimer();
+        timer.stopTimer("Day14", "Problem1");
         return 0;
     }
 
     private int problem2(List<String> list) {
+        timer.startTimer();
+        timer.stopTimer("Day14", "Problem2");
         return 0;
     }
 }

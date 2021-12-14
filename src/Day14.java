@@ -13,21 +13,21 @@ import java.util.Map;
  */
 public class Day14 {
     List<String> list = InputReader.readStringFile("day14.txt");
+    Timer timer = new Timer();
 
 
     public static void main(String[] args) throws IOException {
-        long startTime = System.nanoTime();
-
         Day14 d = new Day14();
-        System.out.printf("Execution time: %f milliseconds%n", ((double) System.nanoTime() - startTime) / 1000000);
+
     }
 
     public Day14() {
-        System.out.println("Answer Problem 1: " + problem1(list));
-        System.out.println("Answer Problem 2: " + problem2(list));
+        System.out.println("Answer: " + problem1(list));
+        System.out.println("Answer: " + problem2(list));
     }
 
     private long problem1(List<String> list) {
+        timer.startTimer();
         String start = list.get(0);
         Map<String, String> rules = new HashMap<>();
         for (int i = 2; i < list.size(); i++) {
@@ -65,11 +65,12 @@ public class Day14 {
         Character maxValue = counterMap.entrySet().stream().max((entry1, entry2) -> entry1.getValue() > entry2.getValue() ? 1 : -1).get().getKey();
         Character minValue = counterMap.entrySet().stream().min((entry1, entry2) -> entry1.getValue() > entry2.getValue() ? 1 : -1).get().getKey();
 
-
+        timer.stopTimer("Day14", "Problem1");
         return counterMap.get(maxValue)-counterMap.get(minValue);
     }
 
     private Long problem2(List<String> list) {
+        timer.startTimer();
         String start = list.get(0);
         Map<String, String> rules = new HashMap<>();
         for (int i = 2; i < list.size(); i++) {
@@ -120,7 +121,7 @@ public class Day14 {
         Character maxValue = charCounterMap.entrySet().stream().max((entry1, entry2) -> entry1.getValue() > entry2.getValue() ? 1 : -1).get().getKey();
         Character minValue = charCounterMap.entrySet().stream().min((entry1, entry2) -> entry1.getValue() > entry2.getValue() ? 1 : -1).get().getKey();
 
-
+        timer.stopTimer("Day14", "Problem2");
         return (charCounterMap.get(maxValue)-charCounterMap.get(minValue))/2;
     }
 }

@@ -11,22 +11,21 @@ import java.util.List;
 public class Day2 {
 
     List<String> list = InputReader.readStringFile("day2.txt");
+    Timer timer = new Timer();
 
     public Day2() {
-        System.out.println(problem1(list));
-        System.out.println(problem2(list));
+        System.out.println("Answer: " + problem1(list));
+        System.out.println("Answer: " + problem2(list));
     }
 
     public static void main(String[] args){
-        long startTime = System.nanoTime();
-
         Day2 d = new Day2();
-        System.out.printf("Execution time: %f milliseconds%n", ((double) System.nanoTime() - startTime) / 1000000);
     }
 
 
 
-    public static int problem1(List<String> list) {
+    public int problem1(List<String> list) {
+        timer.startTimer();
         int depth =0;
         int horizon=0;
 
@@ -39,11 +38,13 @@ public class Day2 {
                 case "forward" -> horizon += Integer.parseInt(parts[1]);
             }
         }
+        timer.stopTimer("Day2", "Problem1");
         return depth*horizon;
 
     }
 
-    public static int problem2(List<String> list) {
+    public int problem2(List<String> list) {
+        timer.startTimer();
         int depth =0;
         int horizon=0;
         int aim=0;
@@ -58,6 +59,7 @@ public class Day2 {
                                 depth+=aim*Integer.parseInt(parts[1]);}
             }
         }
+        timer.stopTimer("Day2", "Problem2");
         return depth*horizon;
     }
 }

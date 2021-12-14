@@ -10,20 +10,19 @@ import java.util.List;
  */
 public class Day10 {
     List<String> list = InputReader.readStringFile("day10.txt");
+    Timer timer = new Timer();
 
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-
         Day10 d = new Day10();
-        System.out.printf("Execution time: %f milliseconds%n", ((double) System.nanoTime() - startTime) / 1000000);
     }
 
     public Day10() {
-        System.out.println("Answer Problem 1: " + problem1(list));
-        System.out.println("Answer Problem 2: " + problem2(list));
+        System.out.println("Answer: " + problem1(list));
+        System.out.println("Answer: " + problem2(list));
     }
 
     private long problem1(List<String> list) {
+        timer.startTimer();
         long score=0;
 
 
@@ -71,7 +70,7 @@ public class Day10 {
         }
 
 
-
+        timer.stopTimer("Day10", "Problem1");
         return score;
     }
 
@@ -142,6 +141,7 @@ public class Day10 {
             scores.add(score);
         }
         scores.sort(Long::compareTo);
+        timer.stopTimer("Day10", "Problem2");
         return scores.get((scores.size()) / 2);
     }
 }
