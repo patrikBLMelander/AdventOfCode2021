@@ -24,6 +24,21 @@ public class Day15 {
 
     private int problem1(List<String> list) {
         timer.startTimer();
+
+
+        int[][]map = new int[list.size()][list.get(0).length()];
+
+        for (int row = 0; row < list.size(); row++) {
+            String line = list.get(row);
+            for (int col = 0; col < list.get(0).length(); col++) {
+                map[row][col] = line.charAt(col)-48;
+            }
+        }
+
+        int count = 0;
+
+
+
         timer.stopTimer("Day14", "Problem1");
         return 0;
     }

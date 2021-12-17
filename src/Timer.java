@@ -10,7 +10,7 @@ public class Timer {
 
 
     public void startTimer(){
-        long startTime = System.nanoTime();
+        long startTimer = System.nanoTime();
     }
 
     public void stopTimer(String day, String problem){
